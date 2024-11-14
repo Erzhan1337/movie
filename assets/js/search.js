@@ -31,7 +31,7 @@ export function search() {
         function ({ results: movieList }) {
           searchWrapper.classList.remove("searching");
           searchResultModal.classList.add("active");
-          searchResultModal.innerHTML = ""; //remove old results
+          searchResultModal.innerHTML = ""; 
 
           searchResultModal.innerHTML = `
             <p class="label">Result for</p>
