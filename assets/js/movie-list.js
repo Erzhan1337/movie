@@ -5,7 +5,7 @@ import { createMovieCard } from "./movie-card.js";
 import { search } from "./search.js";
 import { sidebar } from "./sidebar.js";
 
-// collect genre, name & url paramenter from local storage
+
 const genreName = window.localStorage.getItem("genreName");
 const urlParam = window.localStorage.getItem("urlParam");
 const pageContent = document.querySelector("[page-content]");
@@ -36,9 +36,7 @@ fetchDataFromServer(
       <button class="btn load-more" load-more>Load More</button>
     `;
 
-    /*
-    Add movie card based on fetched item
-    */
+    
     for (const movie of movieList) {
       const movieCard = createMovieCard(movie);
 
@@ -47,24 +45,22 @@ fetchDataFromServer(
 
     pageContent.appendChild(movieListElem);
 
-    /*
-    Load more button functionality
-    */
+    
     document
       .querySelector("[load-more]")
       .addEventListener("click", function () {
         if (currentPage >= totalPages) {
-          this.style.display = "none"; //this == loading-btn
+          this.style.display = "none"; 
           return;
         }
 
         currentPage++;
-        this.classList.add("loading"); //this == loading-btn
+        this.classList.add("loading"); 
 
         fetchDataFromServer(
           `https://api.themoviedb.org/3/discover/movie?include_adult=false&api_key=${api_key}&sort_by=popularity.desc&page=${currentPage}&${urlParam}`,
           ({ results: movieList }) => {
-            this.classList.remove("loading"); //this == loading-btn
+            this.classList.remove("loading"); 
 
             for (const movie of movieList) {
               const movieCard = createMovieCard(movie);
