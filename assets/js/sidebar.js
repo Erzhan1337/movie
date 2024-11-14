@@ -3,10 +3,7 @@
 import { api_key, fetchDataFromServer } from "./api.js";
 
 export function sidebar() {
-  /*------
-  Fetch all genres eg: [{ "id": "123", "name": "Action" }]
-  then change genre formate eg: { 123: "Action" }
-  -------*/
+  
   const genreList = {};
 
   fetchDataFromServer(
@@ -91,7 +88,7 @@ export function sidebar() {
     toggleSidebar(sidebar);
   };
 
-  //   Toggle sidebar in mobile screen
+ 
   const toggleSidebar = function (sidebar) {
     const sidebarBtn = document.querySelector("[menu-btn]");
     const sidebarTogglers = document.querySelectorAll("[menu-toggler]");
