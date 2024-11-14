@@ -1,6 +1,6 @@
 "use strict";
 
-// import all functions
+
 import { sidebar } from "./sidebar.js";
 import { api_key, imageBaseURL, fetchDataFromServer } from "./api.js";
 import { createMovieCard } from "./movie-card.js";
@@ -10,9 +10,7 @@ const pageContent = document.querySelector("[page-content]");
 
 sidebar();
 
-/*-------
-Home page sections (Top rated, Upcoming, Trending movies)
---------*/
+
 const homePageSections = [
   {
     title: "Weekly Trending Movies",
@@ -28,12 +26,8 @@ const homePageSections = [
   },
 ];
 
-/*------
-  Fetch all genres eg: [{ "id": "123", "name": "Action" }]
-  then change genre formate eg: { 123: "Action" }
-  -------*/
+
 const genreList = {
-  // create genre string function from genre_id eg: [23, 43] -> "Action, Romance"
   toString(genreIdList) {
     let newGenreList = [];
 
@@ -150,9 +144,7 @@ const heroBanner = function ({ results: movieList }) {
 
   addHeroSlide();
 
-  /*------
-  fetch data for home page sections (top rated, upcoming, trending)
-  -------*/
+ 
   for (const { title, path } of homePageSections) {
     fetchDataFromServer(
       `https://api.themoviedb.org/3${path}?api_key=${api_key}&page=4`,
@@ -162,9 +154,7 @@ const heroBanner = function ({ results: movieList }) {
   }
 };
 
-/*------
-Hero Slider Functionality
--------*/
+
 const addHeroSlide = function () {
   const sliderItems = document.querySelectorAll("[slider-item]");
   const sliderControls = document.querySelectorAll("[slider-control]");
@@ -196,7 +186,7 @@ const addHeroSlide = function () {
     sliderControls[nextIndex].click();
   };
 
-  // Automatic sliding every 5 seconds
+  
   setInterval(slideToNext, 5000);
 
   addEventOnElements(sliderControls, "click", sliderStart);
@@ -218,7 +208,7 @@ const createMovieList = function ({ results: movieList }, title) {
   `;
 
   for (const movie of movieList) {
-    const movieCard = createMovieCard(movie); //called from movie_card.js
+    const movieCard = createMovieCard(movie); 
 
     movieListElem.querySelector(".slider-inner").appendChild(movieCard);
   }
