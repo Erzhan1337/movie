@@ -42,7 +42,7 @@ const getDirectors = function (crewList) {
   return directorList.join(", ");
 };
 
-// returns only trailers and teasers as array
+
 const filterVideos = function (videoList) {
   return videoList.filter(
     ({ type, site }) =>
@@ -187,7 +187,7 @@ const addSuggestedMovies = function ({ results: movieList }, title) {
     `;
 
   for (const movie of movieList) {
-    const movieCard = createMovieCard(movie); //called from movie_card.js
+    const movieCard = createMovieCard(movie); 
 
     movieListElem.querySelector(".slider-inner").appendChild(movieCard);
   }
